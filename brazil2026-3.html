@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brazil 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a6b3c;
+    --gold: #e8a020;
+    --blue: #1a3a6b;
+    --white: #ffffff;
+    --glass: rgba(255,255,255,0.12);
+    --glass-border: rgba(255,255,255,0.2);
+    --dark: #0a0a0a;
+    --surface: rgba(255,255,255,0.06);
+    --text-primary: #f5f5f7;
+    --text-secondary: rgba(245,245,247,0.6);
+    --accent: #34d399;
+    --gold-light: #fbbf24;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?w=1800&q=90&fit=crop') center/cover no-repeat;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to   { transform: scale(1.12); }
+  }
+
+  #hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.1) 0%,
+      rgba(0,0,0,0.35) 40%,
+      rgba(0,0,0,0.75) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    animation: heroFadeUp 1.2s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 12vw, 140px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .hero-title span {
+    display: block;
+    font-weight: 600;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.02em;
+    margin-bottom: 52px;
+  }
+
+  .hero-dates {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 40px;
+  }
+
+  .hero-dates::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .btn-show {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.95);
+    color: #0a0a0a;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 16px 36px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .btn-show:hover {
+    background: var(--white);
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .btn-show svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-show:hover svg {
+    transform: translateY(3px);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    animation: bounce 2.5s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .hero-scroll-hint span {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ─── PLAN SECTION ─── */
+  #plan {
+    min-height: 100vh;
+    background: #0d0d0d;
+    padding: 80px 0 120px;
+  }
+
+  .plan-header {
+    text-align: center;
+    padding: 0 24px;
+    margin-bottom: 56px;
+    animation: fadeIn 0.6s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .plan-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .plan-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .plan-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  /* ─── DAY TABS ─── */
+  .days-rail-wrap {
+    overflow-x: auto;
+    padding: 0 24px;
+    margin-bottom: 40px;
+    scrollbar-width: none;
+  }
+
+  .days-rail-wrap::-webkit-scrollbar { display: none; }
+
+  .days-rail {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    margin: 0 auto;
+  }
+
+  .day-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 14px 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    min-width: 80px;
+    user-select: none;
+  }
+
+  .day-tab:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+  }
+
+  .day-tab.active {
+    background: var(--white);
+    border-color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(255,255,255,0.12);
+  }
+
+  .day-tab .day-num {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .day-tab.active .day-num { color: #0a0a0a; }
+
+  .day-tab .day-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+
+  .day-tab.active .day-label { color: rgba(0,0,0,0.5); }
+
+  .day-tab .day-city {
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 500;
+    white-space: nowrap;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .day-tab.active .day-city { color: var(--green); }
+
+  /* ─── DAY CONTENT ─── */
+  .day-panels {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .day-panel {
+    display: none;
+    animation: panelIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+
+  .day-panel.active { display: block; }
+
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-hero-card {
+    background: linear-gradient(135deg, var(--surface), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 28px 28px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .day-hero-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .day-hero-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .day-hero-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+
+  .day-hero-info .day-badge {
+    display: inline-block;
+    background: rgba(52,211,153,0.15);
+    border: 1px solid rgba(52,211,153,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 0;
+    position: relative;
+  }
+
+  .tl-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 64px;
+    flex-shrink: 0;
+  }
+
+  .tl-time {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    padding-top: 18px;
+    letter-spacing: 0.03em;
+  }
+
+  .tl-dot-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+
+  /* Right side */
+  .tl-right {
+    flex: 1;
+    padding: 14px 0 14px 20px;
+    position: relative;
+  }
+
+  .tl-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .tl-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 22px;
+    box-shadow: 0 0 0 3px rgba(52,211,153,0.2);
+    z-index: 1;
+  }
+
+  .tl-line {
+    width: 1px;
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    min-height: 20px;
+  }
+
+  .tl-item:last-child .tl-line { display: none; }
+
+  .tl-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 16px 18px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .tl-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.12);
+    transform: translateX(3px);
+  }
+
+  .tl-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .tl-emoji { font-size: 18px; }
+
+  .tl-activity {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .tl-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .tl-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+
+  .tag-food { background: rgba(251,146,60,0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); }
+  .tag-sight { background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .tag-hotel { background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3); }
+  .tag-transport { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+  .tag-free { background: rgba(244,63,94,0.12); color: #fb7185; border: 1px solid rgba(244,63,94,0.3); }
+  .tag-nature { background: rgba(132,204,22,0.12); color: #a3e635; border: 1px solid rgba(132,204,22,0.3); }
+  .tag-beach { background: rgba(34,211,238,0.12); color: #22d3ee; border: 1px solid rgba(34,211,238,0.3); }
+  .tag-culture { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+  .tag-nightlife { background: rgba(236,72,153,0.12); color: #f472b6; border: 1px solid rgba(236,72,153,0.3); }
+  .tag-boat { background: rgba(6,182,212,0.12); color: #06b6d4; border: 1px solid rgba(6,182,212,0.3); }
+  .tag-market { background: rgba(217,119,6,0.12); color: #f59e0b; border: 1px solid rgba(217,119,6,0.3); }
+
+  .tl-hint {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  /* ─── INLINE STOPS ─── */
+  .tl-stops {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tl-stops-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    padding: 4px 0 2px;
+  }
+  .tl-stop-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    transition: background 0.2s;
+  }
+  .tl-stop-card:hover { background: rgba(255,255,255,0.07); }
+  .tl-stop-img {
+    width: 80px;
+    height: 70px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background-color: #222;
+  }
+  .tl-stop-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+  }
+  .tl-stop-num {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(6,182,212,0.15);
+    border: 1px solid rgba(6,182,212,0.35);
+    color: #06b6d4;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tl-stop-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .tl-stop-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+  .tl-stop-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+  .tl-stop-mapbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #06b6d4;
+    background: rgba(6,182,212,0.1);
+    border: 1px solid rgba(6,182,212,0.25);
+    border-radius: 100px;
+    padding: 4px 9px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .tl-stop-mapbtn:hover { background: rgba(6,182,212,0.22); }
+
+  /* ─── MODAL STOPS ─── */
+  .modal-stops-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+  .modal-stop-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    margin-bottom: 6px;
+  }
+  .modal-stop-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(52,211,153,0.15);
+    border: 1px solid rgba(52,211,153,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .modal-stop-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .modal-stop-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .modal-stop-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+  .modal-stop-map {
+    font-size: 16px;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .modal-stop-map:hover { opacity: 1; transform: scale(1.2); }
+
+  /* ─── Modal buttons ─── */
+  .modal-btn-maps {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1.5px solid;
+  }
+  .modal-btn-green {
+    background: rgba(52,211,153,0.15);
+    border-color: rgba(52,211,153,0.4);
+    color: #34d399;
+  }
+  .modal-btn-green:hover {
+    background: rgba(52,211,153,0.28);
+    transform: translateY(-1px);
+  }
+  .modal-btn-blue {
+    background: rgba(96,165,250,0.15);
+    border-color: rgba(96,165,250,0.4);
+    color: #93c5fd;
+  }
+  .modal-btn-blue:hover {
+    background: rgba(96,165,250,0.28);
+    transform: translateY(-1px);
+  }
+
+  /* ─── PRICE TOOLTIP ─── */
+  .price-tooltip {
+    position: absolute;
+    background: #1a1a1a;
+    border: 1px solid rgba(251,191,36,0.4);
+    color: #fbbf24;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    z-index: 2000;
+    pointer-events: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    animation: tooltipIn 0.15s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes tooltipIn {
+    from { opacity: 0; transform: translateY(4px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ─── FLIGHT CARD ─── */
+  .tl-card-flight {
+    background: linear-gradient(135deg, rgba(96,165,250,0.1), rgba(59,130,246,0.05));
+    border-color: rgba(96,165,250,0.25);
+  }
+  .tl-card-flight .tl-activity {
+    font-weight: 600;
+    color: #93c5fd;
+  }
+  .tl-dot-flight {
+    background: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96,165,250,0.3);
+    width: 12px;
+    height: 12px;
+  }
+
+  /* ─── TRANSFER SEPARATOR ─── */
+  .tl-transfer-sep {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0 6px 64px;
+    padding: 6px 12px;
+    background: rgba(96,165,250,0.07);
+    border: 1px dashed rgba(96,165,250,0.2);
+    border-radius: 10px;
+    font-size: 11px;
+    color: #93c5fd;
+    font-weight: 500;
+  }
+  .tl-transfer-icon { font-size: 13px; }
+  .tl-transfer-text { opacity: 0.85; }
+
+  /* ─── PRICE BADGE ─── */
+  .tl-price {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  /* Push tap-for-details below price icon on cards that have both */
+
+  /* ─── CARD FOOTER ─── */
+  .tl-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  /* ─── COLORED DOTS ─── */
+  .tl-dot-food     { background: #fb923c; box-shadow: 0 0 0 3px rgba(251,146,60,0.2); }
+  .tl-dot-sight    { background: #34d399; box-shadow: 0 0 0 3px rgba(52,211,153,0.2); }
+  .tl-dot-hotel    { background: #a78bfa; box-shadow: 0 0 0 3px rgba(167,139,250,0.2); }
+  .tl-dot-transport{ background: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,0.2); }
+  .tl-dot-free     { background: #fb7185; box-shadow: 0 0 0 3px rgba(244,63,94,0.2); }
+  .tl-dot-nature   { background: #a3e635; box-shadow: 0 0 0 3px rgba(132,204,22,0.2); }
+  .tl-dot-beach    { background: #22d3ee; box-shadow: 0 0 0 3px rgba(34,211,238,0.2); }
+  .tl-dot-culture  { background: #f87171; box-shadow: 0 0 0 3px rgba(239,68,68,0.2); }
+  .tl-dot-nightlife{ background: #f472b6; box-shadow: 0 0 0 3px rgba(236,72,153,0.2); }
+  .tl-dot-boat     { background: #06b6d4; box-shadow: 0 0 0 3px rgba(6,182,212,0.2); }
+  .tl-dot-market   { background: #f59e0b; box-shadow: 0 0 0 3px rgba(217,119,6,0.2); }
+
+  /* ─── Footer ─── */
+  .plan-footer {
+    text-align: center;
+    padding-top: 60px;
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 600px) {
+    .day-hero-card { flex-direction: column; text-align: center; }
+    .tl-time { font-size: 11px; }
+    .tl-activity { font-size: 14px; }
+  }
+
+  /* ─── CLICKABLE CARD ─── */
+  .tl-card.has-detail {
+    cursor: default;
+    position: relative;
+    padding-bottom: 42px;
+  }
+  .tl-card.has-detail:hover {
+    border-color: rgba(52,211,153,0.3);
+  }
+
+  /* ─── TAP FOR DETAILS BUTTON ─── */
+  .tap-details-btn {
+    position: absolute;
+    bottom: 12px; right: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 5px 10px;
+    border-radius: 100px;
+    background: rgba(52,211,153,0.12);
+    border: 1px solid rgba(52,211,153,0.3);
+    color: var(--accent);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .tap-details-btn:hover {
+    background: rgba(52,211,153,0.25);
+    transform: translateY(-1px);
+  }
+
+  /* ─── MODAL ─── */
+  #modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  #modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  #modal {
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+    transform: scale(0.93) translateY(16px);
+    transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  #modal-overlay.open #modal {
+    transform: scale(1) translateY(0);
+  }
+  #modal-img-wrap {
+    width: 100%;
+    height: 220px;
+    background: #222;
+    position: relative;
+    overflow: hidden;
+  }
+  #modal-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #modal-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+  }
+  #modal-img-placeholder span { font-size: 36px; }
+  #modal-body {
+    padding: 24px 24px 28px;
+  }
+  #modal-emoji-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  #modal-emoji { font-size: 28px; }
+  #modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+  #modal-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  #modal-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .modal-btn-maps {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(52,211,153,0.12);
+    border: 1px solid rgba(52,211,153,0.3);
+    color: var(--accent);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .modal-btn-maps:hover {
+    background: rgba(52,211,153,0.22);
+    transform: translateY(-1px);
+  }
+  #modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+  #modal-close:hover { background: rgba(0,0,0,0.8); }
+  #modal-img-wrap { position: relative; }
+  /* ─── INFO BUTTON ─── */
+  .btn-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--glass);
+    color: rgba(255,255,255,0.9);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 100px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    letter-spacing: -0.01em;
+    margin-left: 12px;
+  }
+  .btn-info:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.04) translateY(-2px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  /* ─── INFO PANEL ─── */
+  #info-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 900;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  #info-backdrop.open { opacity: 1; pointer-events: all; }
+
+  #info-panel {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100%;
+    width: min(420px, 100vw);
+    background: #111;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    z-index: 901;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #info-panel.open { transform: translateX(0); }
+
+  #info-panel-header {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  #info-panel-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text-primary);
+  }
+  #info-panel-close {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  #info-panel-close:hover { background: rgba(255,255,255,0.12); }
+
+  #info-panel-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    scrollbar-width: none;
+  }
+  #info-panel-body::-webkit-scrollbar { display: none; }
+
+  /* Info sections */
+  .info-section {
+    margin-bottom: 28px;
+  }
+  .info-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .info-section-title span { font-size: 16px; }
+
+  /* Weather grid */
+  .weather-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .weather-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .weather-card .wc-city {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .weather-card .wc-temp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .weather-card .wc-desc {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+  .weather-card .wc-icon { font-size: 22px; margin-bottom: 4px; }
+  .weather-note {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(52,211,153,0.06);
+    border: 1px solid rgba(52,211,153,0.15);
+    border-radius: 10px;
+  }
+
+  /* Currency rows */
+  .currency-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+  .currency-row .cr-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .currency-row .cr-label strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 1px;
+  }
+  .currency-row .cr-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fbbf24;
+    white-space: nowrap;
+  }
+
+  /* Phrases */
+  .phrase-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+  }
+  .phrase-row:hover { background: rgba(255,255,255,0.06); }
+  .phrase-pl {
+    font-size: 13px;
+    color: var(--text-secondary);
+    min-width: 130px;
+  }
+  .phrase-pt {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section id="hero">
+  <div id="hero-bg"></div>
+  <div id="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Brazil<span>2026</span>
+    </h1>
+    <p class="hero-sub">12 days · Rio de Janeiro · Ilha Grande</p>
+    <div class="hero-dates">May 16 – May 27, 2026</div>
+    <br>
+    <div style="display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <a href="#plan" class="btn-show">
+        Show Plan
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M3 9l5 5 5-5" stroke="#0a0a0a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <button class="btn-info" onclick="openInfoPanel()">
+        Trip Info
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 4v12M4 11l6 6 6-6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════ PLAN ════════════════ -->
+<section id="plan">
+  <div class="plan-header">
+    <p class="plan-eyebrow">12 Days · Rio de Janeiro & Ilha Grande</p>
+    <h2 class="plan-title">Your Itinerary</h2>
+    <p class="plan-sub">Tap a day to explore the schedule</p>
+  </div>
+
+  <!-- DAY TABS -->
+  <div class="days-rail-wrap">
+    <div class="days-rail" id="daysRail"></div>
+  </div>
+
+  <!-- DAY PANELS -->
+  <div class="day-panels" id="dayPanels"></div>
+
+</section>
+
+<!-- ════════════════ MODAL ════════════════ -->
+<div id="modal-overlay">
+  <div id="modal">
+    <div id="modal-img-wrap">
+      <button id="modal-close" onclick="closeModal()">✕</button>
+      <img id="modal-img" src="" alt="" style="display:none"/>
+      <div id="modal-img-placeholder"><span id="modal-ph-emoji"></span><p>No photo yet</p></div>
+    </div>
+    <div id="modal-body">
+      <div id="modal-emoji-title">
+        <span id="modal-emoji"></span>
+        <h2 id="modal-title"></h2>
+      </div>
+      <p id="modal-desc"></p>
+      <div id="modal-stops" style="display:none; margin-top:16px;"></div>
+      <div id="modal-actions">
+        <a id="modal-maps-btn" href="#" target="_blank" class="modal-btn-maps modal-btn-green" style="display:none">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          Open in Google Maps
+        </a>
+        <a id="modal-booking-btn" href="#" target="_blank" class="modal-btn-maps modal-btn-blue" style="display:none">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+          </svg>
+          View on Booking.com
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── MOBILE VIEWPORT FIX ───────────────────────────────────────
+function setVh() {
+  document.getElementById('hero').style.height = `${window.innerHeight}px`;
+}
+setVh();
+window.addEventListener('resize', setVh);
+
+// ─── DETAIL DATA ───────────────────────────────────────────────
+const details = {
+  "check-in / odpoczynek": {
+    photo: "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&q=85&fit=crop",
+    maps: "https://www.google.com/maps/place/DOME+Alvares+Cabral/@38.7194019,-9.1584355,17z",
+    booking: "https://www.booking.com/hotel/pt/wallis-rato.pl.html"
+  },
+  "zachód słońca na Miradouro da Senhora do Monte": {
+    photo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Miradouro+da+Senhora+do+Monte"
+  },
+  "Copacabana / Ipanema": {
+    photo: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Copacabana+Beach+Rio+de+Janeiro"
+  },
+  "Arpoador sunset": {
+    photo: "https://images.unsplash.com/photo-1544989164-31b8c75cf91b?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Arpoador+Rio+de+Janeiro"
+  },
+  "Pedra do Sal": {
+    photo: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Pedra+do+Sal+Rio+de+Janeiro"
+  },
+  "Rocinha impreza": {
+    photo: "https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Rocinha+Rio+de+Janeiro"
+  },
+  "Christ the Redeemer": {
+    photo: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Christ+the+Redeemer+Rio+de+Janeiro"
+  },
+  "Sugarloaf": {
+    photo: "https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Sugarloaf+Mountain+Rio+de+Janeiro"
+  },
+  "Jardim Botânico": {
+    photo: "https://images.unsplash.com/photo-1598970434795-0c54fe7c0648?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Jardim+Botanico+Rio+de+Janeiro"
+  },
+  "Parque Lage": {
+    photo: "https://images.unsplash.com/photo-1548012558-e3b5f1c27f9a?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Parque+Lage+Rio+de+Janeiro"
+  },
+  "Santa Teresa": {
+    photo: "https://images.unsplash.com/photo-1554984267-bfef2fbe0479?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Santa+Teresa+Rio+de+Janeiro"
+  },
+  "Escadaria Selarón": {
+    photo: "https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Escadaria+Selaron+Rio"
+  },
+  "Favela Tour": {
+    photo: "https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Rocinha+Rio+de+Janeiro"
+  },
+  "Catedral Metropolitana de São Sebastião": {
+    photo: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Catedral+Metropolitana+de+S%C3%A3o+Sebasti%C3%A3o"
+  },
+  "Real Gabinete Português de Leitura": {
+    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Real+Gabinete+Portugu%C3%AAs+de+Leitura"
+  },
+  "Tijuca Rainforest": {
+    photo: "https://images.unsplash.com/photo-1440407275802-8f78e5a2cf0e?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Tijuca+Forest+Rio+de+Janeiro"
+  },
+  "Feira de São Cristóvão": {
+    photo: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Feira+de+S%C3%A3o+Crist%C3%B3v%C3%A3o"
+  },
+  "plaża (Abraão)": {
+    photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Praia+do+Abraao"
+  },
+  "private boat": {
+    photo: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Ilha+Grande+Brazil",
+    stops: [
+      { name: "Lagoa Azul", desc: "Turkusowa laguna, idealna na snorkeling", maps: "https://maps.google.com/?q=Lagoa+Azul+Ilha+Grande", photo: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80&fit=crop" },
+      { name: "Lagoa Verde", desc: "Płytsza, bardzo przejrzysta woda", maps: "https://maps.google.com/?q=Lagoa+Verde+Ilha+Grande", photo: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80&fit=crop" },
+      { name: "Praia de Freguesia de Santana", desc: "Mała historyczna plaża z kościółkiem", maps: "https://maps.google.com/?q=Freguesia+de+Santana+Ilha+Grande", photo: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop" },
+      { name: "Praia do Japariz", desc: "Spokojna plaża, często lunch stop", maps: "https://maps.google.com/?q=Praia+do+Japariz", photo: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&q=80&fit=crop" },
+      { name: "Praia do Amor / Praia de Fora", desc: "Dzikie, mniej zatłoczone zatoki", maps: "https://maps.google.com/?q=Praia+do+Amor+Ilha+Grande", photo: "https://images.unsplash.com/photo-1471922694854-ff1b63b20054?w=600&q=80&fit=crop" },
+    ]
+  },
+  "check-in": {
+    photo: "https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Rua+Belfort+Roxo+158+Rio+de+Janeiro"
+  },
+  "powrót do mieszkania": {
+    photo: "https://images.unsplash.com/photo-1568495248636-6432b97bd949?w=900&q=85&fit=crop",
+    maps: "https://maps.google.com/?q=Rua+Belfort+Roxo+158+Rio+de+Janeiro"
+  },
+};
+
+// ─── PLAN DATA ─────────────────────────────────────────────────
+const planData = [
+  // MAY 16
+  { day:"MAY 16 · SAT", city:"Warszawa → Lizbona", start:"13:05", title:"✈️ WYLOT Warszawa", cat:"TRANSFER", paid:false, price:null, transfer:null, notes:"Wylot z Warszawy Chopina", flight:true },
+  { day:"MAY 16 · SAT", city:"Lizbona", start:"16:05", title:"✈️ PRZYLOT Lizbona", cat:"TRANSFER", paid:false, price:null, transfer:"Komunikacja miejska (20–25 min)", notes:"Lądowanie w Lizbonie", flight:true },
+  { day:"MAY 16 · SAT", city:"Lizbona", start:"17:00", end:"17:45", title:"check-in / odpoczynek", cat:"HOTEL", paid:true, price:null, transfer:null, notes:"DOME Alvares Cabral" },
+  { day:"MAY 16 · SAT", city:"Lizbona", start:"18:00", end:"19:30", title:"Obiad / kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 16 · SAT", city:"Lizbona", start:"20:20", end:"20:50", title:"zachód słońca na Miradouro da Senhora do Monte", cat:"VIEWPOINT", paid:false, price:null, transfer:"Metro Rato → Martim Moniz + spacer pod górę (25–30 min)", notes:"Przyjść ok. 20:25, zachód ok. 20:45" },
+  { day:"MAY 16 · SAT", city:"Lizbona", start:"21:00", end:"21:30", title:"Spacer przez Alfamę", cat:"CULTURE", paid:false, price:null, transfer:null, notes:"Klimatyczne uliczki i fado" },
+
+  // MAY 17
+  { day:"MAY 17 · SUN", city:"Lizbona", start:"08:30", end:"09:15", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 17 · SUN", city:"Lizbona → Rio", start:"11:40", title:"✈️ WYLOT Lizbona", cat:"TRANSFER", paid:false, price:null, transfer:"Komunikacja miejska (20–30 min)", notes:"Lot transatlantycki ~10h", flight:true },
+  { day:"MAY 17 · SUN", city:"Rio", start:"17:45", title:"✈️ PRZYLOT Rio de Janeiro", cat:"TRANSFER", paid:false, price:null, transfer:null, notes:"GIG – Galeão International Airport", flight:true },
+  { day:"MAY 17 · SUN", city:"Rio", start:"20:05", end:"20:45", title:"check-in", cat:"HOTEL", paid:true, price:null, transfer:"Uber (45–50 min)", notes:"Rua Belfort Roxo 158, Copacabana" },
+  { day:"MAY 17 · SUN", city:"Rio", start:"21:00", end:"22:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:"Pierwszy spokojny wieczór w Rio" },
+
+  // MAY 18
+  { day:"MAY 18 · MON", city:"Rio", start:"11:00", end:"14:00", title:"Copacabana / Ipanema", cat:"BEACH", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 18 · MON", city:"Rio", start:"14:00", end:"15:00", title:"Obiad", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 18 · MON", city:"Rio", start:"16:45", end:"17:40", title:"Arpoador sunset", cat:"VIEWPOINT", paid:false, price:null, transfer:"Spacer (10–15 min)", notes:"Najlepszy spot na zachód słońca w Rio – zachód ok. 17:25" },
+  { day:"MAY 18 · MON", city:"Rio", start:"19:30", end:"21:30", title:"Pedra do Sal", cat:"NIGHTLIFE", paid:false, price:null, transfer:"Uber (25 min)", notes:"Klimatyczna uliczna samba i lokalny vibe" },
+  { day:"MAY 18 · MON", city:"Rio", start:"22:30", end:"00:30", title:"Rocinha impreza", cat:"NIGHTLIFE", paid:true, price:"ok. 0–50 PLN", transfer:"Uber (30–35 min)", notes:"Nocne życie faveli – autentyczna impreza z lokalsami" },
+
+  // MAY 19
+  { day:"MAY 19 · TUE", city:"Rio", start:"08:00", end:"08:45", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 19 · TUE", city:"Rio", start:"09:10", end:"11:30", title:"Christ the Redeemer", cat:"VIEWPOINT", paid:true, price:"ok. 90–120 PLN", transfer:"Uber + pociąg Corcovado (35–45 min)", notes:"Must-see w Rio – ikoniczny punkt widokowy" },
+  { day:"MAY 19 · TUE", city:"Rio", start:"12:00", end:"13:00", title:"Obiad", cat:"FOOD", paid:false, price:null, transfer:"Uber (20–30 min)", notes:null },
+  { day:"MAY 19 · TUE", city:"Rio", start:"13:25", end:"15:45", title:"Sugarloaf", cat:"VIEWPOINT", paid:true, price:"ok. 130–160 PLN", transfer:"Uber (20–25 min)", notes:"Spektakularny widok na zatokę Guanabara" },
+  { day:"MAY 19 · TUE", city:"Rio", start:"20:00", end:"21:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 20
+  { day:"MAY 20 · WED", city:"Rio", start:"08:30", end:"09:15", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 20 · WED", city:"Rio", start:"09:30", end:"11:30", title:"Jardim Botânico", cat:"NATURE", paid:true, price:"ok. 15–25 PLN", transfer:"Uber (15 min)", notes:"Tropikalny ogród z palmami i spokojnym klimatem" },
+  { day:"MAY 20 · WED", city:"Rio", start:"11:40", end:"13:00", title:"Parque Lage", cat:"NATURE", paid:false, price:null, transfer:"Uber (5–10 min)", notes:"Park z widokiem na Jezusa i klimatyczną willą" },
+  { day:"MAY 20 · WED", city:"Rio", start:"14:30", end:"16:30", title:"Santa Teresa", cat:"CULTURE", paid:false, price:null, transfer:"Uber (25–30 min)", notes:"Artystyczna dzielnica z widokami i klimatem Rio" },
+  { day:"MAY 20 · WED", city:"Rio", start:"16:40", end:"17:20", title:"Escadaria Selarón", cat:"CULTURE", paid:false, price:null, transfer:"Uber (10 min)", notes:"Kolorowe schody – jedno z najbardziej instagramowych miejsc" },
+  { day:"MAY 20 · WED", city:"Rio", start:"20:00", end:"21:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 21
+  { day:"MAY 21 · THU", city:"Rio", start:"08:30", end:"09:15", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 21 · THU", city:"Rio", start:"10:00", end:"13:00", title:"Favela Tour", cat:"CULTURE", paid:true, price:"ok. 120–180 PLN", transfer:"Uber (20 min)", notes:"Poznaj Rio od środka" },
+  { day:"MAY 21 · THU", city:"Rio", start:"13:30", end:"14:30", title:"Obiad", cat:"FOOD", paid:false, price:null, transfer:"Uber (20–25 min)", notes:null },
+  { day:"MAY 21 · THU", city:"Rio", start:"14:50", end:"15:15", title:"Catedral Metropolitana de São Sebastião", cat:"CULTURE", paid:false, price:null, transfer:"Uber (15–20 min)", notes:"Nowoczesna katedra o unikalnej architekturze" },
+  { day:"MAY 21 · THU", city:"Rio", start:"15:20", end:"15:50", title:"Real Gabinete Português de Leitura", cat:"CULTURE", paid:false, price:null, transfer:"Spacer (5–10 min)", notes:"Jedna z najpiękniejszych bibliotek świata" },
+  { day:"MAY 21 · THU", city:"Rio", start:"16:30", end:"18:00", title:"Plaża – Copacabana / Ipanema", cat:"BEACH", paid:false, price:null, transfer:"Uber (20–25 min)", notes:null },
+  { day:"MAY 21 · THU", city:"Rio", start:"20:00", end:"21:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 22
+  { day:"MAY 22 · FRI", city:"Rio", start:"07:30", end:"14:30", title:"Tijuca Rainforest", cat:"NATURE", paid:true, price:"ok. 270–300 PLN", transfer:"Odbiór z apartamentu", notes:"Dżungla, wodospady i trekking w środku miasta" },
+  { day:"MAY 22 · FRI", city:"Rio", start:"15:00", end:"16:00", title:"Obiad", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 22 · FRI", city:"Rio", start:"18:30", end:"20:00", title:"Feira de São Cristóvão", cat:"MARKET", paid:false, price:null, transfer:"Uber (20–25 min)", notes:"Lokalny targ z jedzeniem i muzyką (opcjonalnie)" },
+  { day:"MAY 22 · FRI", city:"Rio", start:"20:00", end:"21:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 23
+  { day:"MAY 23 · SAT", city:"Rio → Ilha Grande", start:"07:00", end:"07:30", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 23 · SAT", city:"Ilha Grande", start:"10:30", end:"11:30", title:"Prom / szybka łódź", cat:"BOAT", paid:true, price:null, transfer:"Transfer / shuttle Rio → Conceição de Jacareí (ok. 2–2,5h)", notes:"Kilka kursów dziennie co 1–2h" },
+  { day:"MAY 23 · SAT", city:"Ilha Grande", start:"12:30", end:"13:00", title:"check-in", cat:"HOTEL", paid:true, price:null, transfer:"Spacer z portu (10–20 min)", notes:"Abraão, Ilha Grande" },
+  { day:"MAY 23 · SAT", city:"Ilha Grande", start:"15:00", end:"17:30", title:"plaża (Abraão)", cat:"BEACH", paid:false, price:null, transfer:"Spacer (10–15 min)", notes:"Główna plaża przy miasteczku – chill i pierwsze wejście w klimat wyspy" },
+  { day:"MAY 23 · SAT", city:"Ilha Grande", start:"17:30", end:"18:15", title:"Spacer po miasteczku", cat:"CULTURE", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 23 · SAT", city:"Ilha Grande", start:"19:00", end:"20:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 24
+  { day:"MAY 24 · SUN", city:"Ilha Grande", start:"08:00", end:"08:45", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 24 · SUN", city:"Ilha Grande", start:"09:15", end:"15:30", title:"private boat", cat:"BOAT", paid:true, price:"ok. 150–250 PLN/os", transfer:"Dojście pieszo (10–15 min)", notes:"Przy 7 osobach – najlepsze plaże wyspy" },
+  { day:"MAY 24 · SUN", city:"Ilha Grande", start:"19:00", end:"20:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 25
+  { day:"MAY 25 · MON", city:"Ilha Grande → Rio", start:"08:00", end:"08:45", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 25 · MON", city:"Rio", start:"14:30", title:"powrót do mieszkania", cat:"HOTEL", paid:false, price:null, transfer:"Prom + transfer / shuttle (łącznie ok. 3,5–4h)", notes:"Rua Belfort Roxo 158, Copacabana" },
+  { day:"MAY 25 · MON", city:"Rio", start:"15:00", end:"16:00", title:"Obiad", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 25 · MON", city:"Rio", start:"20:00", end:"21:00", title:"Kolacja", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+
+  // MAY 26
+  { day:"MAY 26 · TUE", city:"Rio", start:"08:30", end:"09:15", title:"Śniadanie", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 26 · TUE", city:"Rio", start:"09:30", end:"11:30", title:"Spacer przy plaży", cat:"BEACH", paid:false, price:null, transfer:null, notes:"Ostatni poranek w Rio" },
+  { day:"MAY 26 · TUE", city:"Rio", start:"11:30", end:"12:30", title:"Obiad", cat:"FOOD", paid:false, price:null, transfer:null, notes:null },
+  { day:"MAY 26 · TUE", city:"Rio", start:"19:55", title:"✈️ WYLOT Rio", cat:"TRANSFER", paid:false, price:null, transfer:"Uber / Taxi (45–50 min, wyjazd ok. 16:30)", notes:"Lot nocny do Lizbony", flight:true },
+
+  // MAY 27
+  { day:"MAY 27 · WED", city:"Lizbona", start:"09:40", title:"✈️ PRZYLOT Lizbona", cat:"TRANSFER", paid:false, price:null, transfer:null, notes:"Krótki layover", flight:true },
+  { day:"MAY 27 · WED", city:"Lizbona → Warszawa", start:"11:40", title:"✈️ WYLOT Lizbona", cat:"TRANSFER", paid:false, price:null, transfer:null, notes:null, flight:true },
+  { day:"MAY 27 · WED", city:"Warszawa", start:"16:40", title:"✈️ PRZYLOT Warszawa", cat:"TRANSFER", paid:false, price:null, transfer:null, notes:"Koniec podróży 🇧🇷", flight:true },
+];
+const catEmoji = {
+  TRANSFER: '🚗', HOTEL: '🏨', FOOD: '🍽️', VIEWPOINT: '🌅',
+  CULTURE: '🎭', NIGHTLIFE: '🎶', NATURE: '🌿', BEACH: '🏖️',
+  BOAT: '⛴️', MARKET: '🛒'
+};
+const catClass = {
+  TRANSFER: 'tag-transport', HOTEL: 'tag-hotel', FOOD: 'tag-food',
+  VIEWPOINT: 'tag-sight', CULTURE: 'tag-culture', NIGHTLIFE: 'tag-nightlife',
+  NATURE: 'tag-nature', BEACH: 'tag-beach', BOAT: 'tag-boat', MARKET: 'tag-market'
+};
+const dotClass = {
+  TRANSFER: 'tl-dot-transport', HOTEL: 'tl-dot-hotel', FOOD: 'tl-dot-food',
+  VIEWPOINT: 'tl-dot-sight', CULTURE: 'tl-dot-culture', NIGHTLIFE: 'tl-dot-nightlife',
+  NATURE: 'tl-dot-nature', BEACH: 'tl-dot-beach', BOAT: 'tl-dot-boat', MARKET: 'tl-dot-market'
+};
+const catLabel = {
+  VIEWPOINT: 'Widok', CULTURE: 'Kultura', NIGHTLIFE: 'Życie nocne',
+  NATURE: 'Natura', BEACH: 'Plaża', BOAT: 'Łódka', MARKET: 'Targ'
+};
+
+// ─── GROUP BY DAY ──────────────────────────────────────────────
+const dayMap = {};
+const dayOrder = [];
+planData.forEach(ev => {
+  if (!dayMap[ev.day]) { dayMap[ev.day] = []; dayOrder.push(ev.day); }
+  dayMap[ev.day].push(ev);
+});
+
+const dayEmojis = {
+  "MAY 16 · SAT": "✈️", "MAY 17 · SUN": "🌍", "MAY 18 · MON": "🎉",
+  "MAY 19 · TUE": "✝️", "MAY 20 · WED": "🌿", "MAY 21 · THU": "🎭",
+  "MAY 22 · FRI": "🌳", "MAY 23 · SAT": "🏝️", "MAY 24 · SUN": "⛵",
+  "MAY 25 · MON": "🔙", "MAY 26 · TUE": "🛫", "MAY 27 · WED": "🏠"
+};
+const dayTitles = {
+  "MAY 16 · SAT": "Wylot — Warszawa → Lizbona",
+  "MAY 17 · SUN": "Lizbona → Rio de Janeiro",
+  "MAY 18 · MON": "Plaże + Arpoador + Pedra do Sal",
+  "MAY 19 · TUE": "Cristo Redentor + Sugarloaf",
+  "MAY 20 · WED": "Ogrody + Santa Teresa + Selarón",
+  "MAY 21 · THU": "Favela Tour + Centrum + Plaża",
+  "MAY 22 · FRI": "Tijuca Rainforest + Targ",
+  "MAY 23 · SAT": "Rio → Ilha Grande",
+  "MAY 24 · SUN": "Boat Tour — Ilha Grande",
+  "MAY 25 · MON": "Powrót do Rio",
+  "MAY 26 · TUE": "Ostatni dzień + Wylot",
+  "MAY 27 · WED": "Powrót do Warszawy"
+};
+
+// ─── RENDER ────────────────────────────────────────────────────
+const rail = document.getElementById('daysRail');
+const panels = document.getElementById('dayPanels');
+
+dayOrder.forEach((dayKey, i) => {
+  const parts = dayKey.split(' · ');
+  const dateNum = parts[0].split(' ')[1];
+  const monthAbbr = parts[0].split(' ')[0].slice(0,3);
+  const weekday = parts[1];
+  const events = dayMap[dayKey];
+  const firstCity = events[0].city;
+
+  // Tab
+  const tab = document.createElement('div');
+  tab.className = 'day-tab' + (i === 0 ? ' active' : '');
+  tab.innerHTML = `
+    <span class="day-num">${dateNum}</span>
+    <span class="day-label">${weekday}</span>
+    <span class="day-city">${firstCity.split('/')[0].trim()}</span>
+  `;
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + i).classList.add('active');
+    tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  });
+  rail.appendChild(tab);
+
+  // Panel
+  const panel = document.createElement('div');
+  panel.className = 'day-panel' + (i === 0 ? ' active' : '');
+  panel.id = 'panel-' + i;
+
+  // Build timeline items
+  const timelineHTML = events.map((ev, idx) => {
+    const det = details[ev.title];
+    const clickable = det ? 'has-detail' : '';
+    const dataAttrs = det
+      ? `data-emoji="${catEmoji[ev.cat]||'📍'}" data-title="${ev.title.replace(/"/g,'&quot;')}" data-desc="${(ev.notes||'').replace(/"/g,'&quot;')}" data-photo="${(det.photo||'')}" data-maps="${(det.maps||'')}" data-booking="${(det.booking||'')}" data-stops='${JSON.stringify(det.stops||[]).replace(/'/g,"&#39;")}'`
+      : '';
+
+    // Transfer separator (shown BEFORE this card, skip if null/empty)
+    const showTransfer = ev.transfer && ev.transfer !== '—' && idx > 0;
+    const transferHTML = showTransfer ? `
+      <div class="tl-transfer-sep">
+        <span class="tl-transfer-icon">🚗</span>
+        <span class="tl-transfer-text">${ev.transfer}</span>
+      </div>` : '';
+
+    // Price badge — only for specific paid categories
+    const priceCats = ['VIEWPOINT','CULTURE','NATURE','BOAT'];
+    const priceHTML = (ev.paid && ev.price && priceCats.includes(ev.cat))
+      ? `<span class="tl-price" data-price="${ev.price.replace(/"/g,'&quot;')}" onclick="showPrice(event,this)">💰</span>`
+      : '';
+
+    // Notes
+    const notesHTML = ev.notes ? `<p class="tl-desc">${ev.notes}</p>` : '';
+
+    // Time range
+    const timeRange = ev.end ? `${ev.start}–${ev.end}` : ev.start;
+
+    // Inline stops (shown below card, no click needed)
+    const stops = det && det.stops && det.stops.length ? det.stops : [];
+    const stopsHTML = stops.length ? `
+      <div class="tl-stops">
+        <div class="tl-stops-label">📍 Typowe przystanki</div>
+        ${stops.map((s, si) => `
+          <div class="tl-stop-card">
+            <div class="tl-stop-img" style="background-image:url('${s.photo}')"></div>
+            <div class="tl-stop-body">
+              <div class="tl-stop-num">${si+1}</div>
+              <div class="tl-stop-info">
+                <span class="tl-stop-name">${s.name}</span>
+                <span class="tl-stop-desc">${s.desc}</span>
+              </div>
+              ${s.maps ? `<a href="${s.maps}" target="_blank" class="tl-stop-mapbtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                Maps
+              </a>` : ''}
+            </div>
+          </div>`).join('')}
+      </div>` : '';
+
+    return `
+    ${transferHTML}
+    <div class="tl-item">
+      <div class="tl-left">
+        <span class="tl-time">${ev.start}</span>
+      </div>
+      <div class="tl-connector">
+        <div class="tl-dot ${ev.flight ? 'tl-dot-flight' : (dotClass[ev.cat]||'tl-dot-transport')}"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-card ${ev.flight ? 'tl-card-flight' : ''} ${clickable}" ${dataAttrs}>
+          <div class="tl-card-top">
+            <span class="tl-emoji">${ev.flight ? '✈️' : (catEmoji[ev.cat]||'📍')}</span>
+            <span class="tl-activity">${ev.title}</span>
+          </div>
+          ${notesHTML}
+          <div class="tl-card-footer">
+            <span class="tl-tag ${catClass[ev.cat]||''}">${catLabel[ev.cat]||ev.cat}</span>
+            ${priceHTML}
+            ${det && !stops.length ? `<button class="tap-details-btn">Tap for details</button>` : ''}
+          </div>
+        </div>
+        ${stopsHTML}
+      </div>
+    </div>`;
+  }).join('');
+
+  panel.innerHTML = `
+    <div class="day-hero-card">
+      <div class="day-hero-icon">${dayEmojis[dayKey]||'📅'}</div>
+      <div class="day-hero-info">
+        <div class="day-badge">${dayKey}</div>
+        <h2>${dayTitles[dayKey]||dayKey}</h2>
+        <p>${firstCity}</p>
+      </div>
+    </div>
+    <div class="timeline">${timelineHTML}</div>
+  `;
+  panels.appendChild(panel);
+});
+
+// ─── PRICE TOOLTIP ─────────────────────────────────────────────
+function showPrice(e, el) {
+  e.stopPropagation();
+  // Remove any existing tooltip
+  document.querySelectorAll('.price-tooltip').forEach(t => t.remove());
+  const tooltip = document.createElement('div');
+  tooltip.className = 'price-tooltip';
+  tooltip.textContent = el.dataset.price;
+  document.body.appendChild(tooltip);
+  const rect = el.getBoundingClientRect();
+  tooltip.style.top = (rect.top + window.scrollY - tooltip.offsetHeight - 8) + 'px';
+  tooltip.style.left = (rect.left + rect.width/2 - tooltip.offsetWidth/2) + 'px';
+  // Auto-hide after 2.5s
+  setTimeout(() => tooltip.remove(), 2500);
+  // Hide on outside click
+  const hide = () => { tooltip.remove(); document.removeEventListener('click', hide); };
+  setTimeout(() => document.addEventListener('click', hide), 10);
+}
+
+// ─── MODAL LOGIC ───────────────────────────────────────────────
+document.getElementById('dayPanels').addEventListener('click', function(e) {
+  const btn = e.target.closest('.tap-details-btn');
+  if (!btn) return;
+  const card = btn.closest('.tl-card.has-detail');
+  if (!card) return;
+  const stops = card.dataset.stops ? JSON.parse(card.dataset.stops) : [];
+  openModal(card.dataset.emoji, card.dataset.title, card.dataset.desc,
+            card.dataset.photo, card.dataset.maps, card.dataset.booking, stops);
+});
+
+function openModal(emoji, title, desc, photo, maps, booking, stops) {
+  document.getElementById('modal-emoji').textContent = emoji;
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-desc').textContent = desc;
+  const img = document.getElementById('modal-img');
+  const ph = document.getElementById('modal-img-placeholder');
+  document.getElementById('modal-ph-emoji').textContent = emoji;
+  if (photo) { img.src = photo; img.style.display = 'block'; ph.style.display = 'none'; }
+  else { img.style.display = 'none'; ph.style.display = 'flex'; }
+  const mapsBtn = document.getElementById('modal-maps-btn');
+  mapsBtn.style.display = maps ? 'inline-flex' : 'none';
+  if (maps) mapsBtn.href = maps;
+  const bookingBtn = document.getElementById('modal-booking-btn');
+  bookingBtn.style.display = booking ? 'inline-flex' : 'none';
+  if (booking) bookingBtn.href = booking;
+
+  // Stops list
+  const stopsWrap = document.getElementById('modal-stops');
+  if (stops && stops.length) {
+    stopsWrap.style.display = 'block';
+    stopsWrap.innerHTML = `
+      <div class="modal-stops-title">📍 Typowe przystanki</div>
+      ${stops.map((s, i) => `
+        <div class="modal-stop-row">
+          <div class="modal-stop-num">${i+1}</div>
+          <div class="modal-stop-info">
+            <span class="modal-stop-name">${s.name}</span>
+            <span class="modal-stop-desc">${s.desc}</span>
+          </div>
+          ${s.maps ? `<a href="${s.maps}" target="_blank" class="modal-stop-map">🗺️</a>` : ''}
+        </div>`).join('')}
+    `;
+  } else {
+    stopsWrap.style.display = 'none';
+    stopsWrap.innerHTML = '';
+  }
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modal-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeInfoPanel(); } });
+
+// ─── INFO PANEL ────────────────────────────────────────────────
+function openInfoPanel() {
+  document.getElementById('info-panel').classList.add('open');
+  document.getElementById('info-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeInfoPanel() {
+  document.getElementById('info-panel').classList.remove('open');
+  document.getElementById('info-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+<!-- ════════════════ INFO PANEL ════════════════ -->
+<div id="info-backdrop" onclick="closeInfoPanel()"></div>
+
+<div id="info-panel">
+  <div id="info-panel-header">
+    <h2>🇧🇷 Trip Info</h2>
+    <button id="info-panel-close" onclick="closeInfoPanel()">✕</button>
+  </div>
+  <div id="info-panel-body">
+
+    <!-- WEATHER -->
+    <div class="info-section">
+      <div class="info-section-title"><span>🌡️</span> Pogoda w maju</div>
+      <div class="weather-grid">
+        <div class="weather-card">
+          <div class="wc-icon">☀️</div>
+          <div class="wc-city">Rio de Janeiro</div>
+          <div class="wc-temp">26°C</div>
+          <div class="wc-desc">Słonecznie, ciepło<br>min. ~20°C w nocy</div>
+        </div>
+        <div class="weather-card">
+          <div class="wc-icon">🌤️</div>
+          <div class="wc-city">Ilha Grande</div>
+          <div class="wc-temp">25°C</div>
+          <div class="wc-desc">Ciepło, możliwe przelotne deszcze</div>
+        </div>
+        <div class="weather-card">
+          <div class="wc-icon">🌊</div>
+          <div class="wc-city">Woda (ocean)</div>
+          <div class="wc-temp">24°C</div>
+          <div class="wc-desc">Idealna do pływania</div>
+        </div>
+        <div class="weather-card">
+          <div class="wc-icon">🌥️</div>
+          <div class="wc-city">Lizbona</div>
+          <div class="wc-temp">22°C</div>
+          <div class="wc-desc">Przyjemnie, lekki wiatr</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRENCY -->
+    <div class="info-section">
+      <div class="info-section-title"><span>💰</span> Waluta</div>
+      <div class="currency-row">
+        <div class="cr-label"><strong>Real brazylijski (BRL)</strong>Oficjalna waluta Brazylii</div>
+        <div class="cr-value">1 PLN ≈ 1,3 BRL</div>
+      </div>
+      <div class="currency-row">
+        <div class="cr-label"><strong>Euro (EUR)</strong>Lizbona</div>
+        <div class="cr-value">1 PLN ≈ 0,23 €</div>
+      </div>
+    </div>
+
+    <!-- PHRASES -->
+    <div class="info-section">
+      <div class="info-section-title"><span>🗣️</span> Zwroty po portugalsku</div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Dzień dobry</span>
+        <div class="phrase-pt">Bom dia</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Dziękuję</span>
+        <div class="phrase-pt">Obrigada / Obrigado</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Proszę</span>
+        <div class="phrase-pt">Por favor</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Przepraszam</span>
+        <div class="phrase-pt">Com licença</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Ile to kosztuje?</span>
+        <div class="phrase-pt">Quanto custa?</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Gdzie jest...?</span>
+        <div class="phrase-pt">Onde fica...?</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Rachunek poproszę</span>
+        <div class="phrase-pt">A conta, por favor</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Nie mówię po port.</span>
+        <div class="phrase-pt">Não falo português</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Pomocy!</span>
+        <div class="phrase-pt">Socorro!</div>
+      </div>
+      <div class="phrase-row">
+        <span class="phrase-pl">Na zdrowie!</span>
+        <div class="phrase-pt">Saúde!</div>
+      </div>
+    </div>
+
+    <!-- EMERGENCY -->
+    <div class="info-section">
+      <div class="info-section-title"><span>🚨</span> Numery alarmowe</div>
+      <div class="currency-row">
+        <div class="cr-label"><strong>Policja</strong>Brazylia</div>
+        <div class="cr-value" style="color:#f87171;">190</div>
+      </div>
+      <div class="currency-row">
+        <div class="cr-label"><strong>Pogotowie</strong>Brazylia (SAMU)</div>
+        <div class="cr-value" style="color:#f87171;">192</div>
+      </div>
+      <div class="currency-row">
+        <div class="cr-label"><strong>Numer ogólny</strong>Brazylia</div>
+        <div class="cr-value" style="color:#f87171;">199</div>
+      </div>
+      <div class="currency-row">
+        <div class="cr-label"><strong>Ambasada RP w Rio</strong>Konsulat</div>
+        <div class="cr-value" style="color:#60a5fa; font-size:12px;">+55 21 2553 3062</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
